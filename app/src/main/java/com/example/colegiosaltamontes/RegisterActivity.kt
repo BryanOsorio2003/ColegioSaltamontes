@@ -119,6 +119,23 @@ class RegisterActivity : AppCompatActivity() {
 
                     var intent =  Intent(this,ResultadoActivity::class.java)
                     val bundle: Bundle = Bundle()
+                    bundle.putString("nombre", estudiantes.nombre)
+                    bundle.putString("documento", estudiantes.documento)
+                    bundle.putString("materia 1", estudiantes.materia1)
+                    bundle.putString("materia 2", estudiantes.materia2)
+                    bundle.putString("materia 3", estudiantes.materia3)
+                    bundle.putString("materia 4", estudiantes.materia4)
+                    bundle.putString("materia 5", estudiantes.materia5)
+
+                    bundle.putDouble("Nota 1", estudiantes.nota1!!)
+                    bundle.putDouble("Nota 2", estudiantes.nota2!!)
+                    bundle.putDouble("Nota 3", estudiantes.nota3!!)
+                    bundle.putDouble("Nota 4", estudiantes.nota4!!)
+                    bundle.putDouble("Nota 5", estudiantes.nota5!!)
+
+                    bundle.putDouble("Promedio", estudiantes.promedio!!)
+                    bundle.putString("Resultado", estudiantes.resultado)
+
                 }
             }
             2->{
