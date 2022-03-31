@@ -2,23 +2,24 @@ package com.example.colegiosaltamontes
 
 class Estudiantes {
 
-    var documento: String?=null
     var nombre: String?=null
-    var edad: Int?=null
     var telefono: String?=null
+    var documento: String?=null
     var direccion: String?=null
+    var edad: Int?=null
 
-    var campoMateria1: String?=null
-    var campoMateria2: String?=null
-    var campoMateria3: String?=null
-    var campoMateria4: String?=null
-    var campoMateria5: String?=null
 
-    var campoNota1: Double?=null
-    var campoNota2: Double?=null
-    var campoNota3: Double?=null
-    var campoNota4: Double?=null
-    var campoNota5: Double?=null
+    var materia1: String?=null
+    var materia2: String?=null
+    var materia3: String?=null
+    var materia4: String?=null
+    var materia5: String?=null
+
+    var nota1: Double?=null
+    var nota2: Double?=null
+    var nota3: Double?=null
+    var nota4: Double?=null
+    var nota5: Double?=null
 
     var resultado: String?=null
     var recuperacion: Boolean?=null
