@@ -84,6 +84,7 @@ class RegisterActivity : AppCompatActivity() {
         estudiantes.materia4=campoMateria4?.text.toString()
         estudiantes.materia5=campoMateria5?.text.toString()
 
+
         estudiantes.nota1=campoNota1?.text.toString().toDouble()
         estudiantes.nota2=campoNota2?.text.toString().toDouble()
         estudiantes.nota3=campoNota3?.text.toString().toDouble()
@@ -93,13 +94,10 @@ class RegisterActivity : AppCompatActivity() {
 
         if(estudiantes.nota1!! <0 || estudiantes.nota2!! <0 || estudiantes.nota3!! <0 || estudiantes.nota4!! <0 || estudiantes.nota5!! <0){
             Toast.makeText(applicationContext, "Nota erronea, las notas deben ser entre 0 y 5", Toast.LENGTH_SHORT).show()
-            /*texto!!.text="Nota erronea, las notas deben ser entre 0 y 5"
-            texto1!!.text=""*/
         }
         else if(estudiantes.nota1!! >5 || estudiantes.nota2!! >5 || estudiantes.nota3!! >5 || estudiantes.nota4!! >5 || estudiantes.nota5!! >5){
             Toast.makeText(applicationContext, "Nota erronea, las notas deben ser entre 0 y 5", Toast.LENGTH_SHORT).show()
-            /*texto!!.text="Nota erronea, las notas deben ser entre 0 y 5"
-            texto1!!.text=""*/
+
         }
         else{
             var promedio=(estudiantes.nota1!! + estudiantes.nota2!! + estudiantes.nota3!! + estudiantes.nota4!! + estudiantes.nota5!!)/5
@@ -116,7 +114,7 @@ class RegisterActivity : AppCompatActivity() {
 
             estudiantes.resultado=resultado
 
-            if(estudiantes.nombre!="" && estudiantes.documento!="" && estudiantes.materia1!="" && estudiantes.materia2!="" && estudiantes.materia3!="" && estudiantes.materia4!="" && estudiantes.materia5!="")
+            if(estudiantes.nombre!="" && estudiantes.documento !="" && estudiantes.materia1 !="" && estudiantes.materia2 !="" && estudiantes.materia3 !="" && estudiantes.materia4 !="" && estudiantes.materia5 !="")
                 {
                 var operaciones:Operaciones= Operaciones()
                 operaciones.registrar(estudiantes)
@@ -126,20 +124,21 @@ class RegisterActivity : AppCompatActivity() {
 
                 bundle.putString("nombre", estudiantes.nombre)
                 bundle.putString("documento", estudiantes.documento)
-                bundle.putString("materia 1", estudiantes.materia1)
-                bundle.putString("materia 2", estudiantes.materia2)
-                bundle.putString("materia 3", estudiantes.materia3)
-                bundle.putString("materia 4", estudiantes.materia4)
-                bundle.putString("materia 5", estudiantes.materia5)
 
-                bundle.putDouble("Nota 1", estudiantes.nota1!!)
-                bundle.putDouble("Nota 2", estudiantes.nota2!!)
-                bundle.putDouble("Nota 3", estudiantes.nota3!!)
-                bundle.putDouble("Nota 4", estudiantes.nota4!!)
-                bundle.putDouble("Nota 5", estudiantes.nota5!!)
+                bundle.putString("materia1", estudiantes.materia1)
+                bundle.putString("materia2", estudiantes.materia2)
+                bundle.putString("materia3", estudiantes.materia3)
+                bundle.putString("materia4", estudiantes.materia4)
+                bundle.putString("materia5", estudiantes.materia5)
 
-                bundle.putDouble("Promedio", estudiantes.promedio!!)
-                bundle.putString("Resultado", estudiantes.resultado)
+                bundle.putDouble("nota1", estudiantes.nota1!!)
+                bundle.putDouble("nota2", estudiantes.nota2!!)
+                bundle.putDouble("nota3", estudiantes.nota3!!)
+                bundle.putDouble("nota4", estudiantes.nota4!!)
+                bundle.putDouble("nota5", estudiantes.nota5!!)
+
+                bundle.putDouble("promedio", estudiantes.promedio!!)
+                bundle.putString("resultado", estudiantes.resultado)
 
                 var recuperacion: String? = null
                 if (promedio <= 2.5) {
