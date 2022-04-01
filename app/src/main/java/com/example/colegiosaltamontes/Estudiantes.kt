@@ -35,6 +35,7 @@ class Estudiantes {
                     recuperacion=true
                 }
             }
+            field = value
         }
     }
 

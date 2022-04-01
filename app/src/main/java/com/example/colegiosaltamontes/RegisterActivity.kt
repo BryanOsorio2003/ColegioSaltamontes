@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
+import android.widget.Toast
 
 class RegisterActivity : AppCompatActivity() {
     var campoNombre: EditText?=null
@@ -55,96 +56,115 @@ class RegisterActivity : AppCompatActivity() {
         texto=findViewById(R.id.texto)
         texto1=findViewById(R.id.texto1)
 
-        val button1: Button = findViewById(R.id.btnRegistrar)
-        button1.setOnClickListener{onClick(1)}
+        val button1: Button = findViewById(R.id.butnRegistrar)
+        button1.setOnClickListener{onClick()}
 
         val button2: Button = findViewById(R.id.btnSalir)
-        button2.setOnClickListener{onClick(2)}
+        button2.setOnClickListener{onClicka()}
     }
 
-    private fun onClick(boton: Int) {
-        when(boton){
-            1->{
-                var estudiantes:Estudiantes= Estudiantes()
-                var operaciones: Operaciones= Operaciones()
+    private fun onClicka() {
+        val intent = Intent(this,MenuActivity::class.java)
+        startActivity(intent)
+    }
 
-                estudiantes.nombre=campoNombre?.text.toString()
-                estudiantes.telefono=campoTelefono?.text.toString()
-                estudiantes.documento=campoDocumento?.text.toString()
-                estudiantes.direccion=campoDireccion?.text.toString()
-                estudiantes.edad=campoEdad?.text.toString().toInt()
-
-                estudiantes.materia1=campoMateria1?.text.toString()
-                estudiantes.materia2=campoMateria2?.text.toString()
-                estudiantes.materia3=campoMateria3?.text.toString()
-                estudiantes.materia4=campoMateria4?.text.toString()
-                estudiantes.materia5=campoMateria5?.text.toString()
-
-                estudiantes.nota1=campoNota1?.text.toString().toDouble()
-                estudiantes.nota2=campoNota2?.text.toString().toDouble()
-                estudiantes.nota3=campoNota3?.text.toString().toDouble()
-                estudiantes.nota4=campoNota4?.text.toString().toDouble()
-                estudiantes.nota5=campoNota5?.text.toString().toDouble()
-
-                if(estudiantes.nota1!! <0 || estudiantes.nota2!! <0 || estudiantes.nota3!! <0 || estudiantes.nota4!! <0 || estudiantes.nota5!! <0){
-                    texto!!.text="Nota erronea, las notas deben ser entre 0 y 5"
-                    texto1!!.text=""
-                }
-                else if(estudiantes.nota1!! >5 || estudiantes.nota2!! >5 || estudiantes.nota3!! >5 || estudiantes.nota4!! >5 || estudiantes.nota5!! >5){
-                    texto!!.text="Nota erronea, las notas deben ser entre 0 y 5"
-                    texto1!!.text=""
-                }
-                else{
-                    var promedio=(estudiantes.nota1!! + estudiantes.nota2!! + estudiantes.nota3!! + estudiantes.nota4!! + estudiantes.nota5!!)/5
-
-                    estudiantes.promedio=promedio
-
-                    //texto.text="Materia: $materia1 con nota $nota1\n Materia: $materia2 con nota $nota2\n Materia: $materia3 con nota $nota3\n Materia: $materia4 con nota $nota4\n Materia: $materia5 con nota $nota5\n Promedio: $promedio"
-                    if(promedio>=3.5){
-                        texto1!!.text="EL ESTUDIANTE PASO EL PERIODO, ¡FELICIDADES!"
-                    }
-                    else{
-                        if(promedio>=2.5 && promedio<=3.4){
-                            texto1!!.text="Puede recuperar las materias,¡PONGASE LAS PILAS!"
-                        }
-                        else{
-                            texto1!!.text="No puede recuperar, no tiene posibilidades a recuperar, ¡lo siento!"
-                        }
-                    }
-                }
+    private fun onClick() {
+        var estudiantes:Estudiantes= Estudiantes()
 
 
-                if(estudiantes.nombre!="" && estudiantes.documento!="" && estudiantes.materia1!="" && estudiantes.materia2!="" && estudiantes.materia3!="" && estudiantes.materia4!="" && estudiantes.materia5!=""){
-                    operaciones.registrar(estudiantes)
+        estudiantes.nombre=campoNombre?.text.toString()
+        estudiantes.telefono=campoTelefono?.text.toString()
+        estudiantes.documento=campoDocumento?.text.toString()
+        estudiantes.direccion=campoDireccion?.text.toString()
+        estudiantes.edad=campoEdad?.text.toString().toInt()
 
-                    var intent =  Intent(this,ResultadoActivity::class.java)
-                    val bundle: Bundle = Bundle()
-                    bundle.putString("nombre", estudiantes.nombre)
-                    bundle.putString("documento", estudiantes.documento)
-                    bundle.putString("materia 1", estudiantes.materia1)
-                    bundle.putString("materia 2", estudiantes.materia2)
-                    bundle.putString("materia 3", estudiantes.materia3)
-                    bundle.putString("materia 4", estudiantes.materia4)
-                    bundle.putString("materia 5", estudiantes.materia5)
+        estudiantes.materia1=campoMateria1?.text.toString()
+        estudiantes.materia2=campoMateria2?.text.toString()
+        estudiantes.materia3=campoMateria3?.text.toString()
+        estudiantes.materia4=campoMateria4?.text.toString()
+        estudiantes.materia5=campoMateria5?.text.toString()
 
-                    bundle.putDouble("Nota 1", estudiantes.nota1!!)
-                    bundle.putDouble("Nota 2", estudiantes.nota2!!)
-                    bundle.putDouble("Nota 3", estudiantes.nota3!!)
-                    bundle.putDouble("Nota 4", estudiantes.nota4!!)
-                    bundle.putDouble("Nota 5", estudiantes.nota5!!)
+        estudiantes.nota1=campoNota1?.text.toString().toDouble()
+        estudiantes.nota2=campoNota2?.text.toString().toDouble()
+        estudiantes.nota3=campoNota3?.text.toString().toDouble()
+        estudiantes.nota4=campoNota4?.text.toString().toDouble()
+        estudiantes.nota5=campoNota5?.text.toString().toDouble()
 
-                    bundle.putDouble("Promedio", estudiantes.promedio!!)
-                    bundle.putString("Resultado", estudiantes.resultado)
 
-                }
+        if(estudiantes.nota1!! <0 || estudiantes.nota2!! <0 || estudiantes.nota3!! <0 || estudiantes.nota4!! <0 || estudiantes.nota5!! <0){
+            Toast.makeText(applicationContext, "Nota erronea, las notas deben ser entre 0 y 5", Toast.LENGTH_SHORT).show()
+            /*texto!!.text="Nota erronea, las notas deben ser entre 0 y 5"
+            texto1!!.text=""*/
+        }
+        else if(estudiantes.nota1!! >5 || estudiantes.nota2!! >5 || estudiantes.nota3!! >5 || estudiantes.nota4!! >5 || estudiantes.nota5!! >5){
+            Toast.makeText(applicationContext, "Nota erronea, las notas deben ser entre 0 y 5", Toast.LENGTH_SHORT).show()
+            /*texto!!.text="Nota erronea, las notas deben ser entre 0 y 5"
+            texto1!!.text=""*/
+        }
+        else{
+            var promedio=(estudiantes.nota1!! + estudiantes.nota2!! + estudiantes.nota3!! + estudiantes.nota4!! + estudiantes.nota5!!)/5
+
+            estudiantes.promedio=promedio
+
+            var resultado:String?=null
+
+            if(promedio>=3.5){
+                resultado="EL ESTUDIANTE PASO EL PERIODO, ¡FELICIDADES!"
+            }else{
+                resultado="EL ESTUDIANTE PERDIO"
             }
-            2->{
-                val intent = Intent(this,MenuActivity::class.java)
+
+            estudiantes.resultado=resultado
+
+            if(estudiantes.nombre!="" && estudiantes.documento!="" && estudiantes.materia1!="" && estudiantes.materia2!="" && estudiantes.materia3!="" && estudiantes.materia4!="" && estudiantes.materia5!="")
+                {
+                var operaciones:Operaciones= Operaciones()
+                operaciones.registrar(estudiantes)
+
+                var intent =  Intent(this,ResultadoActivity::class.java)
+                val bundle: Bundle = Bundle()
+
+                bundle.putString("nombre", estudiantes.nombre)
+                bundle.putString("documento", estudiantes.documento)
+                bundle.putString("materia 1", estudiantes.materia1)
+                bundle.putString("materia 2", estudiantes.materia2)
+                bundle.putString("materia 3", estudiantes.materia3)
+                bundle.putString("materia 4", estudiantes.materia4)
+                bundle.putString("materia 5", estudiantes.materia5)
+
+                bundle.putDouble("Nota 1", estudiantes.nota1!!)
+                bundle.putDouble("Nota 2", estudiantes.nota2!!)
+                bundle.putDouble("Nota 3", estudiantes.nota3!!)
+                bundle.putDouble("Nota 4", estudiantes.nota4!!)
+                bundle.putDouble("Nota 5", estudiantes.nota5!!)
+
+                bundle.putDouble("Promedio", estudiantes.promedio!!)
+                bundle.putString("Resultado", estudiantes.resultado)
+
+                var recuperacion: String? = null
+                if (promedio <= 2.5) {
+                    recuperacion = "No puede"
+                }
+                else if (promedio <= 3.5) {
+                    recuperacion = "Puede recuperar"
+                }
+                else {
+                    recuperacion = null
+                }
+                if (recuperacion != null) {
+                    bundle.putString("recuperacion", recuperacion)
+                }
+                intent.putExtras(bundle)
                 startActivity(intent)
+                }
+
             }
+
+
         }
 
     }
 
-}
+
+
 
