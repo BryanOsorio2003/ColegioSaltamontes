@@ -27,7 +27,8 @@ class MenuActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             2->{
-
+                val intent = Intent(this,EstadisticasActivity::class.java)
+                startActivity(intent)
             }
             3->{
 

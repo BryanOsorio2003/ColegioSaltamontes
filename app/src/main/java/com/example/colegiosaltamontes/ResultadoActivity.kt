@@ -17,8 +17,6 @@ class ResultadoActivity : AppCompatActivity() {
         var nombre = findViewById<TextView>(R.id.nombre)
 
 
-        var btnSalir=findViewById<Button>(R.id.buttonSalir)
-        btnSalir.setOnClickListener { onClick() }
 
         var campoMateria1 = findViewById<TextView>(R.id.materia1)
         var campoNota1 = findViewById<TextView>(R.id.campoNota1)
@@ -31,6 +29,9 @@ class ResultadoActivity : AppCompatActivity() {
         var campoMateria5 = findViewById<TextView>(R.id.materia5)
         var campoNota5 = findViewById<TextView>(R.id.campoNota5)
         var recupera = findViewById<TextView>(R.id.recupera)
+
+        var btnSalir=findViewById<Button>(R.id.buttonSalir)
+        btnSalir.setOnClickListener { onClick() }
 
         var bundle: Bundle? = this.intent.extras
 

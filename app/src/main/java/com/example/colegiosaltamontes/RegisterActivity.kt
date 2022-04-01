@@ -108,16 +108,24 @@ class RegisterActivity : AppCompatActivity() {
 
             if(promedio>=3.5){
                 resultado="EL ESTUDIANTE PASO EL PERIODO, ¡FELICIDADES!"
-            }else{
-                resultado="EL ESTUDIANTE PERDIO"
             }
+            else{
+                if(promedio>=2.5 && promedio<=3.4){
+                    resultado="Puede recuperar las materias,¡PONGASE LAS PILAS!"
+                }
+                else{
+                    resultado="No puede recuperar, no tiene posibilidades a recuperar, ¡lo siento!"
+                }
+            }
+
 
             estudiantes.resultado=resultado
 
             if(estudiantes.nombre!="" && estudiantes.documento !="" && estudiantes.materia1 !="" && estudiantes.materia2 !="" && estudiantes.materia3 !="" && estudiantes.materia4 !="" && estudiantes.materia5 !="")
                 {
                 var operaciones:Operaciones= Operaciones()
-                operaciones.registrar(estudiantes)
+
+                Operaciones.registrar(estudiantes)
 
                 var intent =  Intent(this,ResultadoActivity::class.java)
                 val bundle: Bundle = Bundle()
@@ -140,19 +148,19 @@ class RegisterActivity : AppCompatActivity() {
                 bundle.putDouble("promedio", estudiantes.promedio!!)
                 bundle.putString("resultado", estudiantes.resultado)
 
-                var recuperacion: String? = null
-                if (promedio <= 2.5) {
-                    recuperacion = "No puede"
+                //var recuperacion: String? = null
+                /*if (promedio <= 2.5) {
+                    resultado = "Perdio y no puedes recuperar"
                 }
                 else if (promedio <= 3.5) {
-                    recuperacion = "Puede recuperar"
+                    resultado = "Perdio pero puedes recuperar"
                 }
                 else {
-                    recuperacion = null
+                    resultado = null
                 }
-                if (recuperacion != null) {
-                    bundle.putString("recuperacion", recuperacion)
-                }
+                if (resultado != null) {
+                    bundle.putString("recuperacion", resultado)
+                }*/
                 intent.putExtras(bundle)
                 startActivity(intent)
                 }
