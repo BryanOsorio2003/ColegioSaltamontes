@@ -28,8 +28,7 @@ class RegisterActivity : AppCompatActivity() {
     var campoNota4: EditText?=null
     var campoNota5: EditText?=null
 
-    var texto: TextView?=null
-    var texto1: TextView?=null
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,8 +52,6 @@ class RegisterActivity : AppCompatActivity() {
         campoNota4=findViewById(R.id.nota4)
         campoNota5=findViewById(R.id.nota5)
 
-        texto=findViewById(R.id.texto)
-        texto1=findViewById(R.id.texto1)
 
         val button1: Button = findViewById(R.id.butnRegistrar)
         button1.setOnClickListener{onClick()}

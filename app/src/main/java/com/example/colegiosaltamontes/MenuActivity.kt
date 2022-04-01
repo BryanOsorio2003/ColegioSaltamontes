@@ -31,7 +31,8 @@ class MenuActivity : AppCompatActivity() {
                 startActivity(intent)
             }
             3->{
-
+                val intent = Intent(this,AyudaActivity::class.java)
+                startActivity(intent)
             }
         }
 

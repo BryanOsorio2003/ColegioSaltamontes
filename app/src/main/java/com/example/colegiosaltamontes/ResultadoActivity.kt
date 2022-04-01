@@ -28,7 +28,6 @@ class ResultadoActivity : AppCompatActivity() {
         var campoNota4 = findViewById<TextView>(R.id.campoNota4)
         var campoMateria5 = findViewById<TextView>(R.id.materia5)
         var campoNota5 = findViewById<TextView>(R.id.campoNota5)
-        var recupera = findViewById<TextView>(R.id.recupera)
 
         var btnSalir=findViewById<Button>(R.id.buttonSalir)
         btnSalir.setOnClickListener { onClick() }
@@ -50,9 +49,7 @@ class ResultadoActivity : AppCompatActivity() {
         campoNota4.text="${bundle?.getDouble("nota4")}"
         campoMateria5.text="${bundle?.getString("materia5")}"
         campoNota5.text="${bundle?.getDouble("nota5")}"
-        if (bundle?.getString("resultado")=="Perdio") {
-            recupera.text = "Puede recuperar: ${bundle?.getString("recuperacion")}"
-        }
+
     }
     private fun onClick() {
         var intent = Intent(this,MenuActivity::class.java)
