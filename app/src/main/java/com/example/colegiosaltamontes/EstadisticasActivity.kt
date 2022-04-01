@@ -34,9 +34,9 @@ class EstadisticasActivity : AppCompatActivity() {
 
     private fun totalEstudiantesRecuperacion(): Int {
         var cantidad = 0
-        for (estudiantes in lista){
-            if (estudiantes.recuperacion == true){
-                cantidad=cantidad+1
+        for (estu in lista){
+            if (estu.recuperacion == true){
+                cantidad += 1
             }
         }
         return cantidad
@@ -45,18 +45,17 @@ class EstadisticasActivity : AppCompatActivity() {
     private fun totalEstudiantesPerdedores(): Int {
         var cantidad=0
         for (est in lista){
-            if (est.resultado.equals("Perdio")){
+            if (est.resultado.equals("No puede recuperar, no tiene posibilidades a recuperar, ¡lo siento!")){
                 cantidad += 1
             }
         }
-
         return cantidad
     }
 
     private fun totalEstudiantesGanadores(): Int {
         var cantidad=0
-        for (estudiantes in lista){
-            if (estudiantes.resultado.equals("Gano")){
+        for (est in lista){
+            if (est.resultado.equals("EL ESTUDIANTE PASO EL PERIODO, ¡FELICIDADES!")){
                 cantidad += 1
             }
         }
